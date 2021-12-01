@@ -20,10 +20,27 @@ function delTasks(event){
 // delTask
 function delTask(event){
     if(event.target.textContent === 'X'){
-        if(confirm('Oled kindel?')) {
+        if(confirm('r u sure brah?')) {
             event.target.parentElement.remove()
+            let task = event.target.parentElement.textContent.slice(0, -1)
+            removeStorage(task)
         }
     }
+}
+
+function removeStorage(task){
+    let tasks
+    if(localStorage.getItem('tasks') === null){
+        tasks = []
+    } else {
+        tasks = JSON.parse(localStorage.getItem('tasks'))
+    }
+    tasks.forEach(function(taskFromLS, taskindex){
+        if(taskFromLS === task){
+            tasks.splice(taskindex, 1)
+        }
+    })
+    localStorage.setItem('tasks', JSON.stringify(tasks))
 }
 
 // add task function

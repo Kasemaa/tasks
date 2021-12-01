@@ -63,7 +63,7 @@ function getTasks(){
 // delTask
 function delTask(event){
     if(event.target.textContent === 'X'){
-        if(confirm('Do you want to delete this task?')){
+        if(confirm('r u sure brah?')){
             event.target.parentElement.remove()
             let task = event.target.parentElement.textContent.slice(0, -1)
             removeStorage(task)

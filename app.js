@@ -52,7 +52,20 @@ const taskList = document.querySelector('ul')
     li.appendChild(link)
     // add li to tasklist
     taskList.appendChild(li)
+    // save task to localStorage
+    taskStorage(task)
     // clear from input value
     document.querySelector('#task').value = ''
     event.preventDefault()
+}
+
+function taskStorage(task){
+    let tasks
+    if(localStorage.getItem('tasks') === null){
+  tasks = []
+    } else {
+        tasks = JSON.parse(localStorage.getItem('tasks'))
+    }
+    tasks.push(task)
+    localStorage.setItem('tasks', JSON.stringify(tasks))
 }
